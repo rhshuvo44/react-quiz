@@ -1,10 +1,13 @@
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
 import "./styles/App.css";
-import Nav from "./components/Nav";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      <Layout>
+        <Home />
+      </Layout>
     </div>
   );
 }
