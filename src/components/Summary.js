@@ -1,5 +1,6 @@
 import React from "react";
 import img from "../assets/img/success.png";
+import "../styles/Summary.css";
 const Summary = () => {
   return (
     <div class="summary">
