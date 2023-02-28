@@ -3,7 +3,7 @@ import "../styles/Answers.css";
 import Checkbox from "./Checkbox";
 const Answers = () => {
   return (
-    <div class="answers">
+    <div className="answers">
       <Checkbox className="answer" text="A New Hope 1" />
     </div>
   );

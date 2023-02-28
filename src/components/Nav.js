@@ -5,10 +5,10 @@ import Account from "./Account";
 
 const nav = () => {
   return (
-    <nav class="nav">
+    <nav className="nav">
       <ul>
         <li>
-          <Link to="/" class="brand">
+          <Link to="/" className="brand">
             <h3>Quiz App</h3>
           </Link>
         </li>

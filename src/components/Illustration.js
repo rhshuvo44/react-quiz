@@ -3,7 +3,7 @@ import signup from "../assets/img/signup.svg";
 import "../styles/Illustration.css";
 const Illustration = () => {
   return (
-    <div class="illustration">
+    <div className="illustration">
       <img src={signup} alt="Signup" />
     </div>
   );

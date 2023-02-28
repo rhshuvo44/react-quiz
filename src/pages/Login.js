@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <>
       <h1>Login to your account</h1>
-      <div class="column">
+      <div className="column">
         <Illustration />
         <From className="login">
           <TextInput
@@ -21,7 +21,7 @@ const Login = () => {
           <Button>
             <span>Submit now</span>
           </Button>
-          <div class="info">
+          <div className="info">
             Don't have an account? <Link to="/signup">Signup</Link> instead.
           </div>
         </From>
