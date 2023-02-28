@@ -1,15 +1,26 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
 } from "firebase/auth";
 export const authContext = createContext();
+export const useAuth = () => {
+  return useContext(authContext);
+};
 const AuthProvaider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+  }, []);
   // signup function
   const singup = async (email, password, username) => {
     const auth = getAuth();
@@ -18,6 +29,10 @@ const AuthProvaider = ({ children }) => {
     // update profile
     await updateProfile(auth.currentUser, {
       displayName: username,
+    });
+    const user = auth.currentUser;
+    setCurrentUser({
+      ...user,
     });
   };
   // login function
