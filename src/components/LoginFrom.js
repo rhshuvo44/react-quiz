@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvaider";
 import Button from "./Button";
 import From from "./From";
@@ -8,10 +8,12 @@ import TextInput from "./TextInput";
 const LoginFrom = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const from = location.state?.from?.pathname || "/";
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -19,7 +21,7 @@ const LoginFrom = () => {
       setError("");
       setLoading(true);
       await login(email, password);
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       setLoading(false);
       setError(err);

@@ -1,14 +1,14 @@
 import React from "react";
 import thum from "../assets/img/nat-9.jpg";
 import "../styles/Video.css";
-const Video = () => {
+const Video = ({ title, noq, id }) => {
   return (
     <div className="video">
-      <img src={thum} alt="thum" />
-      <p>#23 React Hooks Bangla - React useReducer hook Bangla</p>
+      <img src={thum} alt={title} />
+      <p>{title}</p>
       <div className="qmeta">
-        <p>10 Questions</p>
-        <p>Score : Not taken yet</p>
+        <p>{noq} Questions</p>
+        <p>Total points : {noq * 5}</p>
       </div>
     </div>
   );

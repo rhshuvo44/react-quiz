@@ -1,7 +1,6 @@
 import React from "react";
 import Illustration from "../components/Illustration";
 import SignupFrom from "../components/SignupFrom";
-import "../styles/Signup.css";
 const Singup = () => {
   return (
     <>

@@ -5,21 +5,29 @@ import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
 import Singup from "./pages/Singup";
+import RequireAuth from "./RequireAuth/RequireAuth";
 import "./styles/App.css";
 
 function App() {
   return (
     <div className="App">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="quiz" element={<Quiz />} />
-            <Route path="result" element={<Result />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Singup />} />
-          </Routes>
-        </Layout>
-      </div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="quiz"
+            element={
+              <RequireAuth>
+          <Quiz />
+              </RequireAuth>
+            }
+          />
+          <Route path="result" element={<Result />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Singup />} />
+        </Routes>
+      </Layout>
+    </div>
   );
 }
 

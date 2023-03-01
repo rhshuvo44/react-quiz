@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvaider";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
@@ -9,6 +9,7 @@ import TextInput from "./TextInput";
 const SignupFrom = () => {
   const { singup } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -16,6 +17,8 @@ const SignupFrom = () => {
   const [confirmPassord, setConfirmPassword] = useState("");
   const [agree, setAgree] = useState("");
   const [error, setError] = useState("");
+  const from = location.state?.from?.pathname || "/";
+
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(username, email, password);
@@ -26,14 +29,14 @@ const SignupFrom = () => {
       setError("");
       setLoading(true);
       await singup(email, password, username);
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       setLoading(false);
       setError(err);
     }
   };
   return (
-    <From className="signup" onSubmit={onSubmit}>
+    <From style={{ height: "500px" }} onSubmit={onSubmit}>
       <TextInput
         type="text"
         placeholder="Enter name"
